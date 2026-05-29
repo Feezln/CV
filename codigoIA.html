@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alberto López – CV</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #faf7f2;
+      color: #2c2c2c;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      padding: 2rem 1rem 5rem;
+    }
+
+    /* Contenedor con efecto papel */
+    .paper {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 6px;
+      padding: 3rem 3.5rem;
+      box-shadow: 4px 6px 0px #e0d8cc, 8px 12px 0px #ece6dc;
+      position: relative;
+    }
+
+    /* Línea izquierda estilo cuaderno */
+    .paper::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 3.2rem;
+      width: 1px;
+      background: #f0c4c4;
+      opacity: .5;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #ffd166;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Caveat', cursive;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2c2c2c;
+      flex-shrink: 0;
+      border: 3px solid #2c2c2c;
+    }
+
+    .header-info h1 {
+      font-family: 'Caveat', cursive;
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1.1;
+      color: #2c2c2c;
+    }
+
+    .header-info .role {
+      font-size: .85rem;
+      color: #888;
+      margin-top: .2rem;
+    }
+
+    .header-info .bio {
+      margin-top: .6rem;
+      font-size: .9rem;
+      color: #555;
+      max-width: 440px;
+    }
+
+    /* Contacto */
+    .contacto-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem 1.4rem;
+      margin-bottom: 2.2rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1.5px dashed #e0d8cc;
+    }
+
+    .contacto-row a, .contacto-row span {
+      font-size: .82rem;
+      color: #666;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    .contacto-row a:hover { color: #e76f51; }
+    .contacto-row i { color: #e76f51; font-size: .75rem; }
+
+    /* Secciones */
+    .seccion { margin-bottom: 2rem; }
+
+    .seccion-titulo {
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #2c2c2c;
+      margin-bottom: .9rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .seccion-titulo::after {
+      content: '';
+      flex: 1;
+      height: 1.5px;
+      background: #f0e8e0;
+    }
+
+    /* Items experiencia */
+    .item {
+      margin-bottom: 1.2rem;
+      padding-left: 1rem;
+      border-left: 3px solid #ffd166;
+      position: relative;
+    }
+
+    .item::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: #ffd166;
+      border: 2px solid #2c2c2c;
+      border-radius: 50%;
+      position: absolute;
+      left: -5.5px;
+      top: 6px;
+    }
+
+    .item .puesto { font-weight: 500; font-size: .95rem; color: #2c2c2c; }
+    .item .empresa { font-size: .82rem; color: #e76f51; font-weight: 500; }
+    .item .fecha { font-size: .77rem; color: #aaa; margin-bottom: .3rem; }
+    .item p { font-size: .87rem; color: #666; }
+
+    /* Educación */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: .85rem;
+      flex-wrap: wrap;
+      gap: .2rem;
+    }
+
+    .edu-item .inst { font-weight: 500; font-size: .92rem; }
+    .edu-item .grado { font-size: .82rem; color: #888; }
+    .edu-item .anio { font-size: .8rem; color: #aaa; white-space: nowrap; }
+
+    /* Skills */
+    .skills-wrap { display: flex; flex-wrap: wrap; gap: .45rem; }
+
+    .tag {
+      padding: .3rem .85rem;
+      border-radius: 4px;
+      font-size: .8rem;
+      border: 1.5px solid #e0d8cc;
+      color: #555;
+      background: #faf7f2;
+      transition: border-color .2s, color .2s;
+      cursor: default;
+    }
+
+    .tag:hover { border-color: #e76f51; color: #e76f51; }
+
+    /* Nota al pie */
+    .nota {
+      margin-top: 2.5rem;
+      font-family: 'Caveat', cursive;
+      font-size: 1.05rem;
+      color: #aaa;
+      text-align: right;
+      border-top: 1.5px dashed #e0d8cc;
+      padding-top: 1rem;
+    }
+
+    @media (max-width: 560px) {
+      .paper { padding: 2rem 1.5rem 2rem 1.8rem; }
+      .paper::before { left: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="paper">
+
+  <div class="header">
+    <div class="avatar">AL</div>
+    <div class="header-info">
+      <h1>Alberto Misael López Nava</h1>
+      <div class="role">Ing. en Sistemas · Desarrollador web · Aguascalientes</div>
+      <p class="bio">
+        Me gusta construir cosas que funcionen de verdad. Aprendo rápido, trabajo bien en equipo
+        y no le huyo a los bugs difíciles (aunque a veces me desesperen un poco).
+      </p>
+    </div>
+  </div>
+
+  <div class="contacto-row">
+    <span><i class="fa-solid fa-envelope"></i> alberto.lopez@gmail.com</span>
+    <span><i class="fa-solid fa-phone"></i> 449 213 5874</span>
+    <a href="#"><i class="fa-brands fa-github"></i> github.com/albertolopez</a>
+    <span><i class="fa-solid fa-language"></i> Inglés B2</span>
+  </div>
+
+  <div class="seccion">
+    <div class="seccion-titulo"><span>💼</span> Experiencia</div>
+
+    <div class="item">
+      <div class="puesto">Desarrollador Web Jr.</div>
+      <div class="empresa">Nextek Solutions</div>
+      <div class="fecha">Enero 2023 – hoy</div>
+      <p>Trabajo con React y Node.js. Ayudé a migrar parte del backend a microservicios y aprendí bastante en el proceso. También hago code reviews con el equipo.</p>
+    </div>
+
+    <div class="item">
+      <div class="puesto">Prácticas profesionales – TI</div>
+      <div class="empresa">Municipio de Aguascalientes</div>
+      <div class="fecha">Jun – Dic 2022</div>
+      <p>Soporte técnico, arreglé muchas impresoras (demasiadas), automaticé algunos reportes con Python y documenté procesos que nadie había documentado antes.</p>
+    </div>
+
+    <div class="item">
+      <div class="puesto">Freelance</div>
+      <div class="empresa">Por mi cuenta</div>
+      <div class="fecha">2021 – 2022</div>
+      <p>Hice páginas web y tiendas en línea para negocios locales. Aprendí a lidiar con clientes y a cotizar mejor con el tiempo.</p>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <div class="seccion-titulo"><span>🎓</span> Educación</div>
+
+    <div class="edu-item">
+      <div>
+        <div class="inst">Ing. en Sistemas Computacionales</div>
+        <div class="grado">Instituto Tecnológico de Aguascalientes · Promedio 9.1</div>
+      </div>
+      <div class="anio">2018 – 2023</div>
+    </div>
+
+    <div class="edu-item">
+      <div>
+        <div class="inst">AWS Cloud Practitioner</div>
+        <div class="grado">Amazon Web Services</div>
+      </div>
+      <div class="anio">2023</div>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <div class="seccion-titulo"><span>🛠️</span> Habilidades</div>
+    <div class="skills-wrap">
+      <span class="tag">JavaScript</span>
+      <span class="tag">React</span>
+      <span class="tag">Node.js</span>
+      <span class="tag">Python</span>
+      <span class="tag">SQL</span>
+      <span class="tag">Git</span>
+      <span class="tag">Docker</span>
+      <span class="tag">CSS</span>
+      <span class="tag">Linux</span>
+      <span class="tag">REST APIs</span>
+    </div>
+  </div>
+
+  <div class="nota">
+    actualizado mayo 2026 · hecho con mucho café ☕
+  </div>
+
+</div>
+
+</body>
+</html>
